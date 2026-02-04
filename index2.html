@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Сайт на доработке — Coming Soon</title>
+
+  <style>
+    :root{
+      /* Подстрой под вашу палитру */
+      --accent: #c8ff00;     /* фирменный (кислотно-жёлтый) */
+      --text: #ffffff;
+      --muted: rgba(255,255,255,.72);
+      --overlay: rgba(10,12,14,.72);
+      --panel: rgba(0,0,0,.22);
+      --stroke: rgba(255,255,255,.22);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+
+      --font: GolosTextWebRegular, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html, body { height:100%; }
+
+
+    @font-face {
+	font-family: 'GolosTextWebRegular';
+	src: 
+		url('./fonts/golos-text_regular.woff') format('woff'),
+		url('./fonts/golos-text_regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+    body{
+      margin:0;
+      font-family:GolosTextWebRegular, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background: #0b0c0e;
+      overflow-x: hidden;
+    }
+
+    /* BACKGROUND */
+    .bg{
+      position: fixed;
+      inset: 0;
+      background-image: var(--bg);
+      background-size: cover;
+      background-position: center;
+      filter: saturate(.9) contrast(1.05);
+      transform: scale(1.02);
+    }
+    .overlay{
+      position: fixed;
+      inset: 0;
+         background: linear-gradient(180deg, rgba(0, 0, 0, .15), rgba(0, 0, 0, .15)), var(--overlay);
+          backdrop-filter: blur(1px);
+    }
+
+    /* CENTER */
+    .wrap{
+      position: relative;
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .content{
+      width: min(980px, 100%);
+      text-align: center;
+      padding: clamp(18px, 3vw, 36px);
+    }
+
+    .topline{
+         font-family:GolosTextWebRegular, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+     
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      /* letter-spacing: .28em; */
+      text-transform: uppercase;
+      font-size: 20px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .logo{
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+     
+      overflow: hidden;
+    }
+    .logo img{ width:100%; height:100%; object-fit: contain; padding: 8px; }
+
+    h1{
+      
+      font-family: GolosTextWebRegular, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;;
+      font-weight: 600;
+      letter-spacing: .02em;
+      font-size: clamp(44px, 6.2vw, 84px);
+      line-height: 1.02;
+      text-transform: uppercase;
+      text-shadow: 0 6px 28px rgba(0,0,0,.55);
+    }
+
+    .subtitle{
+      margin: 16px auto 0;
+      max-width: 760px;
+      font-size: clamp(14px, 1.6vw, 18px);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* COUNTDOWN */
+    .countWrap{
+      margin: 26px auto 0;
+      width: min(720px, 100%);
+      border: 1px solid var(--stroke);
+      background: var(--panel);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px 18px 16px;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .unit{
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      padding: 14px 12px 12px;
+    }
+
+    .num{
+      font-size: clamp(26px, 3.6vw, 40px);
+      font-weight: 800;
+      letter-spacing: .06em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .label{
+      margin-top: 6px;
+      font-size: 11px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.72);
+    }
+
+    .bar{
+      margin-top: 14px;
+      height: 3px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.16);
+      overflow: hidden;
+    }
+    .bar > i{
+      display:block;
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: .9;
+      animation: sweep 1.8s ease-in-out infinite;
+    }
+    @keyframes sweep{
+      0%{ transform: translateX(-120%); }
+      100%{ transform: translateX(220%); }
+    }
+
+    /* SUBSCRIBE */
+    .subscribeTitle{
+      margin-top: 22px;
+      font-size: 12px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.78);
+    }
+
+    .form{
+      margin: 12px auto 0;
+      width: min(560px, 100%);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+
+    input{
+      width: 100%;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.28);
+      color: var(--text);
+      outline: none;
+      font-size: 14px;
+    }
+    input::placeholder{ color: rgba(255,255,255,.6); }
+
+    button{
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 0;
+      cursor: pointer;
+      background: var(--accent);
+      color: #0b0c0e;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: transform .12s ease, filter .12s ease;
+    }
+    button:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+
+    .hint{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,.62);
+    }
+
+    .footer{
+      margin-top: 18px;
+      font-size: 12px;
+      color: rgba(255,255,255,.52);
+      display:flex;
+      justify-content:center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer a{ color: rgba(255,255,255,.72); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.28); }
+    .footer a:hover{ border-bottom-color: rgba(255,255,255,.55); }
+
+    @media (max-width: 640px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+      .form{ grid-template-columns: 1fr; }
+      button{ width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1) Подставь свою картинку -->
+  <div class="bg"></div>
+  <div class="overlay"></div>
+
+  <main class="wrap">
+    <section class="content" aria-live="polite">
+      <div class="topline">
+       
+          <img class="logo" src="./img/company-logo-1.svg" alt="expo-point" />
+          
+        <span>point</span>
+      </div>
+
+      <h1>Сайт на доработке</h1>
+      <p class="subtitle">
+        Приносим извинения за доставленные неудобства.   <br/>Заходите позже
+      </p>
+
+      <div class="countWrap">
+        <div class="grid" id="timer">
+          <div class="unit"><div class="num" id="d">00</div><div class="label">дней</div></div>
+          <div class="unit"><div class="num" id="h">00</div><div class="label">часов</div></div>
+          <div class="unit"><div class="num" id="m">00</div><div class="label">минут</div></div>
+          <div class="unit"><div class="num" id="s">00</div><div class="label">секунд</div></div>
+        </div>
+        <div class="bar" aria-hidden="true"><i></i></div>
+
+       
+      </div>
+
+  
+    </section>
+  </main>
+
+  <script>
+    // ========= НАСТРОЙКИ =========
+    // 1) Фон (замени на свою картинку)
+    const BACKGROUND_IMAGE = "url('./img/bg.png')";
+    // 2) Дата запуска (замени на свою)
+    // Формат: "2026-02-06T18:00:00+03:00"
+    const TARGET_DATE = "2026-02-06T18:00:00+03:00";
+    // ==============================
+
+    document.querySelector(".bg").style.setProperty("--bg", BACKGROUND_IMAGE);
+    document.querySelector(".bg").style.backgroundImage = BACKGROUND_IMAGE;
+
+    const el = {
+      d: document.getElementById("d"),
+      h: document.getElementById("h"),
+      m: document.getElementById("m"),
+      s: document.getElementById("s"),
+    };
+
+    const pad = (n) => String(n).padStart(2, "0");
+
+    function tick(){
+      const now = new Date().getTime();
+      const target = new Date(TARGET_DATE).getTime();
+      const diff = target - now;
+
+      if (isNaN(target)) {
+        el.hint.textContent = "Проверь TARGET_DATE в коде (неверный формат даты).";
+        return;
+      }
+
+      if (diff <= 0){
+        el.d.textContent = "00";
+        el.h.textContent = "00";
+        el.m.textContent = "00";
+        el.s.textContent = "00";
+        el.hint.textContent = "Мы почти готовы. Обновите страницу через пару минут 🙂";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      el.d.textContent = pad(days);
+      el.h.textContent = pad(hours);
+      el.m.textContent = pad(mins);
+      el.s.textContent = pad(secs);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+  </script>
+</body>
+</html>
